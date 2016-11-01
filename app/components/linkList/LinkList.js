@@ -8,7 +8,8 @@ const LinkList = ({
   users,
   links,
   deleteLink,
-  starLink
+  starLink,
+  push
 }) =>
   <ul style={{
     display: 'flex',
@@ -24,6 +25,7 @@ const LinkList = ({
         link={link}
         deleteLink={deleteLink}
         starLink={starLink}
+        push={push}
       />
     )}
   </ul>

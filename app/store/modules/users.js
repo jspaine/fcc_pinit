@@ -228,7 +228,6 @@ export const deleteUserEpic = action$ =>
 
 export const deleteLinkEpic = action$ =>
   action$.ofType(DELETE_LINK_REQUEST)
-    .do(x => console.log('delete',x))
     .mergeMap(action =>
       api.del(`api/users/link/${action.linkId}`)
         .map(deleteLinkSuccess)

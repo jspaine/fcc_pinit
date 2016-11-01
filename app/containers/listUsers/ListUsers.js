@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {push} from 'react-router-redux'
 import {Button} from 'react-toolbox/lib/button'
 
 import {UserCard} from 'components'
@@ -26,7 +27,10 @@ class ListUsers extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap'
+      }}>
         {this.props.users && this.props.users.map(user =>
           <UserCard
             user={user}
@@ -35,9 +39,8 @@ class ListUsers extends React.Component {
             currUser={this.props.currUser}
             onDeleteClick={() => this.props.deleteUser(user._id)}
           >
-            {user.ip && <p>{`IP: ${user.ip}`}</p>}
-            {user.role && <p>{`Role: ${user.role}`}</p>}
-            {user.provider && <p>{`Provider: ${user.provider}`}</p>}
+            {user.links.length}
+            {user.links.length === 1 ? ' link' : ' links'}
           </UserCard>
         )}
       </div>

@@ -11,7 +11,7 @@ const UserCard = ({
   onDeleteClick,
   children
 }) =>
-  <Card>
+  <Card className={style.card}>
     <CardTitle
       onClick={onUserClick}
       className={style.cardTitle}
@@ -19,12 +19,11 @@ const UserCard = ({
       title={user.username}
       subtitle={user.email}
     />
-    <CardText className={style.cardSubText}>
-
+    <CardText>
+      {children}
     </CardText>
-    {children}
     <CardActions>
-      {currUser && (user._id === currUser._id || currUser.role === 'admin') &&
+      {(currUser && currUser.role === 'admin') &&
         <Button onClick={onDeleteClick}>Delete</Button>
       }
     </CardActions>

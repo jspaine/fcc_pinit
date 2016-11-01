@@ -40,6 +40,7 @@ class Home extends React.Component {
         links={links}
         deleteLink={deleteLink}
         starLink={starLink}
+        push={this.props.pushState}
       />
     )
   }

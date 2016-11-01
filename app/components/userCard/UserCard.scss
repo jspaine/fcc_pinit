@@ -2,6 +2,8 @@
 
 .card[data-react-toolbox="card"] {
   margin: 2rem auto;
+
+  flex-shrink: 1;
 }
 
 .cardSubText {

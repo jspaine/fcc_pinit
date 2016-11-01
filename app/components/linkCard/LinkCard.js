@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react'
 import {Card, CardTitle, CardMedia, CardText, CardActions} from 'react-toolbox/lib/card'
 import {FontIcon} from 'react-toolbox/lib/font_icon'
 import {Button} from 'react-toolbox/lib/button'
+import {Link} from 'react-toolbox/lib/link'
 import moment from 'moment'
 
 // import style from './UserCard.scss'
@@ -11,15 +12,16 @@ const LinkCard = ({
   users,
   link,
   deleteLink,
-  starLink
+  starLink,
+  push
 }) => {
   const hasStarred = user && link.stars.find(star => star.user === user._id)
-  const author = users.find(u => u._id === user._id)
+  const author = user && users.find(u => u._id === user._id)
   const owns = author && author.links.find(l => l._id === link._id)
   return (
     <Card
       style={{
-        maxWidth: '200px',
+        width: '250px',
         margin: '1rem',
         flexShrink: 1
       }}
@@ -41,8 +43,19 @@ const LinkCard = ({
       <CardTitle
         avatar={link.avatar}
         title={link.description}
-        subtitle={`by ${link.username}`}
-      />
+      >
+        <Link
+          href={`/users/${link.userId}`}
+          label={link.username}
+          onClick={ev => {
+            ev.preventDefault()
+            push(`/users/${link.userId}`)
+          }}
+          style={{
+            justifyContent: 'flex-start'
+          }}
+        />
+      </CardTitle>
       <CardActions style={{
         justifyContent: 'space-between'
       }}>
